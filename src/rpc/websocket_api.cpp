@@ -91,6 +91,8 @@ std::string websocket_api_connection::on_message(
       auto var = fc::json::from_string(message, fc::json::legacy_parser, _max_conversion_depth);
       const auto& var_obj = var.get_object();
 
+      wdump(message);
+      
       if( var_obj.contains( "method" ) )
       {
          auto call = var.as<fc::rpc::request>(_max_conversion_depth);
